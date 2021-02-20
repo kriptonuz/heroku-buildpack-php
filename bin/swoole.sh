@@ -17,7 +17,7 @@ BUILD_DIR=$1
 ln -s $BUILD_DIR/.heroku /app/.heroku
 export PATH=/app/.heroku/php/bin:$PATH
 
-/app/php/bin/phpize && \
+/app/.heroku/php/bin/phpize && \
 ./configure --enable-swoole-curl && \
 make && make install
 
