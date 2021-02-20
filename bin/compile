@@ -47,6 +47,9 @@ source $bp_dir/bin/util/failures.sh
 source $bp_dir/bin/util/newrelic.sh
 source $bp_dir/bin/util/blackfire.sh
 
+
+echo "-----> Building Swoole..."
+
 # swoole extension
 source $bp_dir/bin/swoole
 
