@@ -14,7 +14,6 @@ install_swoole_ext() {
   fi
   cd $swoole_dir
   #
-  BUILD_DIR=$1
   #ln -s $BUILD_DIR/.heroku /app/.heroku
   export PATH=/app/.heroku/php/bin:$PATH
 
