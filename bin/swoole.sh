@@ -3,7 +3,7 @@
 dep_url=git://github.com/swoole/swoole-src.git
 swoole_dir=swoole-src
 echo "-----> Building Swoole..."
-
+#
 ### Swoole
 echo "[LOG] Downloading Swoole"
 git clone $dep_url -q
@@ -12,7 +12,7 @@ if [ ! -d "$swoole_dir" ]; then
   exit
 fi
 cd $swoole_dir
-
+#
 BUILD_DIR=$1
 ln -s $BUILD_DIR/.heroku /app/.heroku
 export PATH=/app/.heroku/php/bin:$PATH
