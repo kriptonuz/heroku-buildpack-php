@@ -17,10 +17,10 @@ BUILD_DIR=$1
 ln -s $BUILD_DIR/.heroku /app/.heroku
 export PATH=/app/.heroku/php/bin:$PATH
 
-phpize && \
+/app/php/bin/phpize && \
 ./configure --enable-swoole-curl && \
 make && make install
 
 cd
-echo "important extension swoole into php.ini"
-echo "extension=swoole.so" >> /app/.heroku/php/etc/php/php.ini
+#echo "important extension swoole into php.ini"
+#echo "extension=swoole.so" >> /app/.heroku/php/etc/php/php.ini
