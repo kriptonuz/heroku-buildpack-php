@@ -80,7 +80,7 @@ class ComposerInstallerPlugin implements PluginInterface, EventSubscriberInterfa
 		$this->allPlatformRequirements = [];
 		foreach($operations as $operation) {
 			foreach($operation->getPackage()->getRequires() as $require) {
-				if(strpos($require->getTarget(), 'heroku-sys/') === 0 && $require->getTarget() !== 'heroku-sys/ext-swoole') {
+				if(strpos($require->getTarget(), 'heroku-sys/') === 0) {
 					$this->allPlatformRequirements[$require->getTarget()] = $require->getSource();
 				}
 			}
