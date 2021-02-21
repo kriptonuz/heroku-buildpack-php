@@ -115,6 +115,8 @@ if(file_exists($COMPOSER_LOCK)) {
 		}
 		$require = array_merge($require, mkdep($sfr));
 	}
+
+    file_put_contents('php://stderr', print_r($lock, true));
 	// same for platform-dev requirements, but they go into a require-dev section later, so only installs with --dev pull those in
 	if($rootDev["require"]) {
 		$lock["packages-dev"][] = $rootDev;
@@ -145,7 +147,6 @@ if(file_exists($COMPOSER_LOCK)) {
 		}
 	}
 
-    file_put_contents('php://stderr', print_r($lock, true));
 	// add all meta-packages to one local package repo
 	if($metapaks) $repositories[] = ["type" => "package", "package" => $metapaks];
 }
