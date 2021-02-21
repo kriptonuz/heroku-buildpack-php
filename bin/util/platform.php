@@ -78,6 +78,8 @@ $require = [];
 $requireDev = [];
 if(file_exists($COMPOSER_LOCK)) {
 	$lock = json_decode(file_get_contents($COMPOSER_LOCK), true);
+
+    file_put_contents('php://stderr', print_r($lock, true));
 	// basic lock file validity check
 	if(!$lock || !isset($lock["platform"], $lock["platform-dev"], $lock["packages"], $lock["packages-dev"])) exit(1);
 	if(!isset($lock["content-hash"]) && !isset($lock["hash"])) exit(1);
@@ -116,7 +118,6 @@ if(file_exists($COMPOSER_LOCK)) {
 		$require = array_merge($require, mkdep($sfr));
 	}
 
-    file_put_contents('php://stderr', print_r($lock, true));
 	// same for platform-dev requirements, but they go into a require-dev section later, so only installs with --dev pull those in
 	if($rootDev["require"]) {
 		$lock["packages-dev"][] = $rootDev;
