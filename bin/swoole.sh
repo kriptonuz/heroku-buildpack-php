@@ -3,7 +3,7 @@
 install_swoole_ext() {
   dep_url=git://github.com/swoole/swoole-src.git
   swoole_dir=swoole-src
-  space="     "
+  space="      "
   echo "-----> Installing Swoole..."
   #
   ### Swoole
