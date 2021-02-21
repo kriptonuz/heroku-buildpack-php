@@ -22,6 +22,6 @@ install_swoole_ext() {
     make && make install
   } &> /dev/null
   cd
-  echo "$swoole Adding swoole into php.ini"
+  echo "$space Adding swoole into php.ini"
   echo "extension=swoole.so" >> /app/.heroku/php/etc/php/php.ini
 }
