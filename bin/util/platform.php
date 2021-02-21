@@ -79,12 +79,13 @@ $requireDev = [];
 if(file_exists($COMPOSER_LOCK)) {
 	$lock = json_decode(file_get_contents($COMPOSER_LOCK), true);
 
-	// Removing ext-swoole from composer.lock file
-	unset($lock['platform']['ext-swoole']);
-
 	// basic lock file validity check
 	if(!$lock || !isset($lock["platform"], $lock["platform-dev"], $lock["packages"], $lock["packages-dev"])) exit(1);
 	if(!isset($lock["content-hash"]) && !isset($lock["hash"])) exit(1);
+
+    // Removing ext-swoole from composer.lock file after validate check
+    unset($lock['platform']['ext-swoole']);
+
 	$have_runtime_req |= hasreq($lock["platform"]);
 	$have_dev_runtime_req |= hasreq($lock["platform-dev"]);
 	// for each package that has platform requirements we build a meta-package that we then depend on
