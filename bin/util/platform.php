@@ -113,7 +113,6 @@ if(file_exists($COMPOSER_LOCK)) {
 				$sfr[$name] = getflag($lock["stability-flags"][$name]);
 			}
 		}
-		file_put_contents('php://stderr', print_r($sfr, true));
 		$require = array_merge($require, mkdep($sfr));
 	}
 	// same for platform-dev requirements, but they go into a require-dev section later, so only installs with --dev pull those in
@@ -145,7 +144,8 @@ if(file_exists($COMPOSER_LOCK)) {
 			$requireDev[$package["name"]] = $package["version"];
 		}
 	}
-	
+
+    file_put_contents('php://stderr', print_r($lock, true));
 	// add all meta-packages to one local package repo
 	if($metapaks) $repositories[] = ["type" => "package", "package" => $metapaks];
 }
