@@ -17,10 +17,11 @@ install_swoole_ext() {
   #ln -s $BUILD_DIR/.heroku /app/.heroku
   export PATH=/app/.heroku/php/bin:$PATH
 
-  /app/.heroku/php/bin/phpize && \
-  ./configure --enable-swoole-curl && \
-  make && make install
-
+  {
+    /app/.heroku/php/bin/phpize && \
+    ./configure --enable-swoole-curl && \
+    make && make install
+  } &> /dev/null
   cd
   echo "important extension swoole into php.ini"
   echo "extension=swoole.so" >> /app/.heroku/php/etc/php/php.ini
