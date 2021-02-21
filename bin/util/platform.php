@@ -79,7 +79,9 @@ $requireDev = [];
 if(file_exists($COMPOSER_LOCK)) {
 	$lock = json_decode(file_get_contents($COMPOSER_LOCK), true);
 
-    file_put_contents('php://stderr', print_r($lock, true));
+	// Removing ext-swoole from composer.lock file
+	unset($lock['platform']['ext-swoole']);
+
 	// basic lock file validity check
 	if(!$lock || !isset($lock["platform"], $lock["platform-dev"], $lock["packages"], $lock["packages-dev"])) exit(1);
 	if(!isset($lock["content-hash"]) && !isset($lock["hash"])) exit(1);
